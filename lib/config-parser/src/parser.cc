@@ -2,6 +2,15 @@
 
 #include <cstdlib>
 
+/**
+ * @brief Parse a double from a line
+ * and puts the token back if no double is found
+ * 
+ * @param line stringstream to be parsed
+ * @param value reference to the double to be filled
+ * @return true if a double is found
+ * @return false if no double is found
+ */
 bool Config::parse_double(std::istringstream &line, double &value)
 {
     std::string token;
@@ -25,6 +34,18 @@ bool Config::parse_double(std::istringstream &line, double &value)
     return false;
 }
 
+/**
+ * @brief Parse a range from a line
+ * a range is of the form: range( inf sup step )
+ * or simply a double
+ * 
+ * @param line stringstream to be parsed
+ * @param inf reference to the inferior limit
+ * @param sup reference to the superior limit
+ * @param step reference to the step
+ * @return true if the range is parsed successfully
+ * @return false otherwise
+ */
 bool Config::parse_range(std::istringstream &line, double &inf, double &sup, double &step)
 {
     std::string token;
@@ -71,6 +92,16 @@ bool Config::parse_range(std::istringstream &line, double &inf, double &sup, dou
     return true;
 }
 
+/**
+ * @brief Parse a sphere from a stringstream
+ * A sphere is of the form: sphere range range range double
+ * respectively for the x, y, z coordinates and the radius
+ * 
+ * @param line the stringstream to be parsed
+ * @param world the list of objects to be filled
+ * @return true if the sphere is parsed successfully
+ * @return false otherwise
+ */
 bool Config::parse_sphere(std::istringstream &line, std::unique_ptr<HittableList> &world)
 {
     double infx, supx, stepx;
@@ -99,6 +130,12 @@ bool Config::parse_sphere(std::istringstream &line, std::unique_ptr<HittableList
     return true;
 }
 
+/**
+ * @brief Parse a config file
+ * 
+ * @param filename the name of the file to be parsed
+ * @return std::unique_ptr<HittableList> the list of parsed objects
+ */
 std::unique_ptr<HittableList> Config::parse_config(std::string filename)
 {
     auto res = std::make_unique<HittableList>();

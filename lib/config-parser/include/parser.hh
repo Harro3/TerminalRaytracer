@@ -7,6 +7,12 @@
 #include <sstream>
 #include <string>
 
+/**
+ * @brief Config parser class
+ * Contains static methods to parse a config file
+ * and build a HittableList
+ * 
+ */
 class Config
 {
 public:
