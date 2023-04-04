@@ -1,0 +1,2 @@
+
+sphere range(1 2 3) 0 -1 1

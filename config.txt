@@ -1,0 +1,2 @@
+
+sphere range( -1 1 1 ) range( -1 1 1 ) -1 0.5

@@ -1,0 +1,4 @@
+
+#syntax: sphere x y z radius
+
+sphere 0 0.0 -1.0 1
